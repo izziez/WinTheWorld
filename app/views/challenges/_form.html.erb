@@ -1,0 +1,40 @@
+<%= form_for(@challenge) do |f| %>
+  <% if @challenge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@challenge.errors.count, "error") %> prohibited this challenge from being saved:</h2>
+
+      <ul>
+      <% @challenge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :title, class: "form-control", placeholder: "Post Title" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :category, class: "form-control", placeholder: "Category" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_date %><br>
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="form-group">
+    <%= f.label :end_date %><br>
+    <%= f.datetime_select :end_date %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :dif_rating, class: "form-control", placeholder: "Difficulty Level" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_area :list, class: "form-control", placeholder: "Enter List", :row => 30 %>
+  </div>
+  <div class="form-group">
+    <%= f.number_field :points, class: "form-control", placeholder: "Points" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

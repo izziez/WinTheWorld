@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Challenges</h1>
+
+<div class="row">
+  <% @challenges.each do |challenge| %>
+     <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <%= link_to challenge.title, challenge %><br>
+              <%= challenge.category %><br>
+              <%= challenge.start_date.strftime('%m/%d/%Y at %I:%M%p') %><br>
+              <%= challenge.dif_rating %>
+            </div>
+            <div class="panel-body">
+
+              <ul class="list-group">
+                <% challenge.list.each do |item| %>
+                  <li class="list-group-item"><%= item %><input type="submit" class="btn btn warning" value="Post Your Pic!"></input></li>
+                <% end %>
+              </ul>
+
+              <%= challenge.points %>
+            </div>
+            <div class="panel-footer">
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                <span class="sr-only">40% Complete (success)</span>
+                </div>
+              </div>
+              <%= link_to 'Edit', edit_challenge_path(challenge), class: "btn btn-warning" %>
+              <%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Challenge', new_challenge_path %>

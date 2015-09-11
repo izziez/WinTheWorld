@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
   resources :challenges
   root 'welcome#index'
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   get 'welcome/about'
 
   get 'welcome/faq'
+
+  get 'myprofile' => 'users#myprofile'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

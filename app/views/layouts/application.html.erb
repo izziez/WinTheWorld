@@ -2,44 +2,95 @@
 <html>
 <head>
   <title>Win The World</title>
-
-    <!-- Latest compiled and minified CSS -->
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Cinzel:400,700' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag     'application' %>
+<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+<%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Explore It", root_url, :class => "navbar-brand" %>
+
+     <header id="header_area">
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <div class="logo">
+                          <h2><a href="">Win The World</a></h2>
+                      </div>
+                  </div>
+                  <div class="col-sm-8">
+                      <div class="mainmenu">
+                          <div class="navbar navbar-nobg">
+                              <div class="navbar-header">
+                                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                      <span class="sr-only">Toggle navigation</span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                  </button>
+                              </div>
+
+                              <div class="navbar-collapse collapse">
+                                  <ul class="nav navbar-nav navbar-right">
+                                    <li><%= link_to "Challenges", challenges_path %></li>
+                                    <% if user_signed_in? %>
+                                    <li><%= link_to "My Profile", myprofile_path(id: current_user.id) %></li>
+                                    <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                                    <% else %>
+                                    <li><%= link_to "Sign In", user_session_path %></li>
+                                    <% end %>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+  <%= yield %>
+  </div>
+  <footer id="footer_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="company_logo">
+                    <h2>Win The World</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="company_address">
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="company_address">
+
+                </div>
+            </div>
+            <div class="col-med-3">
+                <div class="social_icons">
+
+                     <button class="mdl-button mdl-js-button mdl-button--fab"><i class="zmdi zmdi-facebook"></i>
+</button>
+                     <button class="mdl-button mdl-js-button mdl-button--fab">
+<i class="zmdi zmdi-instagram"></i>
+</button>
+                    <button class="mdl-button mdl-js-button mdl-button--fab">
+<i class="zmdi zmdi-twitter"></i>
+</button>
+
+                </div>
+            </div>
+        </div>
     </div>
+</footer>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Challenges", challenges_path %></li>
-        <% if user_signed_in? %>
-          <li><%= link_to "My Profile", myprofile_path(id: current_user.id) %></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign In", user_session_path %></li>
-        <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </nav>
-
-<div class="container yield">
-<%= yield %>
-</div>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>

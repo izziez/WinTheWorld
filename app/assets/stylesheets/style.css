@@ -55,6 +55,7 @@ h6 {
     margin: 0 0 15px;
     font-weight: 700;
     font-family: 'Cinzel', sans-serif;
+    line-height: 25px;
 }
 
 h2 {
@@ -77,6 +78,10 @@ p {
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: 14px;
+}
+
+#container {
+  position: relative;
 }
 /************** main css ******************/
 /************** header css ******************/
@@ -129,6 +134,7 @@ p {
     color: white;
     padding-top: 40px;
     margin-top: 200px;
+    line-height: 50px;
 }
 
 .header_area_text p {
